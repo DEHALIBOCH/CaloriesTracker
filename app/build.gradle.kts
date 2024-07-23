@@ -2,7 +2,7 @@ plugins {
     id(libs.plugins.android.application.get().pluginId)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.compose.compiler)
-    kotlin("kapt")
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -43,9 +43,6 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
-    kapt {
-        correctErrorTypes = true
-    }
 }
 
 dependencies {
@@ -67,7 +64,7 @@ dependencies {
 
     // hilt
     implementation(libs.hilt.android)
-    kapt(libs.hilt.android.compiler)
+    ksp(libs.hilt.android.compiler)
     implementation(libs.hilt.navigation.compose)
 
     // coil compose
@@ -82,7 +79,7 @@ dependencies {
 
     // room
     implementation(libs.room.runtime)
-    kapt(libs.room.compiler)
+    ksp(libs.room.compiler)
     implementation(libs.room.ktx)
 
     // coroutines
@@ -107,7 +104,6 @@ dependencies {
     androidTestImplementation(libs.mockwebserver)
     androidTestImplementation(libs.hilt.android.testing)
     androidTestImplementation(libs.androidx.runner)
-    kaptAndroidTest(libs.hilt.android.compiler)
 
     // projects
     implementation(project(":core"))
