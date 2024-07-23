@@ -1,5 +1,5 @@
 plugins {
-    alias(libs.plugins.android.application)
+    id(libs.plugins.android.application.get().pluginId)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.compose.compiler)
     kotlin("kapt")
