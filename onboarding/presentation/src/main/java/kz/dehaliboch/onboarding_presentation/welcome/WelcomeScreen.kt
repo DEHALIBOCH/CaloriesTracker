@@ -15,12 +15,16 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import kz.dehaliboch.core.R
+import kz.dehaliboch.core.navigation.Route
+import kz.dehaliboch.core.util.UiEvent
 import kz.dehaliboch.core_ui.LocalSpasing
 import kz.dehaliboch.core_ui.components.ActionButton
 import kz.dehaliboch.core_ui.components.DefaultContainerForPreview
 
 @Composable
-fun WelcomeScreen() {
+fun WelcomeScreen(
+    onNavigate : (UiEvent.Navigate) -> Unit
+) {
     val spacing = LocalSpasing.current
     Column(
         modifier = Modifier.fillMaxSize().padding(spacing.spaceMedium),
@@ -36,7 +40,7 @@ fun WelcomeScreen() {
         ActionButton(
             text = stringResource(id = R.string.next),
             onClick = {
-                // TODO
+                onNavigate(UiEvent.Navigate(Route.AGE))
             },
             modifier = Modifier.align(Alignment.CenterHorizontally)
         )
@@ -47,6 +51,8 @@ fun WelcomeScreen() {
 @Composable
 private fun WelcomeScreenPreview() {
     DefaultContainerForPreview {
-        WelcomeScreen()
+        WelcomeScreen {
+
+        }
     }
 }
